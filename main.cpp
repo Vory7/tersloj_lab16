@@ -4,7 +4,7 @@
 #include<conio.h>
  
 using namespace std;
-int W, K, curW, curP, bestP, lostP, MaxP;
+int W, K, curW = 0, curP = 0, bestP = 0, lostP = 0, MaxP = 0;
  
  
 void metodvg(int j, int *p, int *w, int *x, int *y) {
@@ -17,7 +17,7 @@ void metodvg(int j, int *p, int *w, int *x, int *y) {
     }
     lostP += p[j];
     
-    if(bestP <= MaxP - lostP) metodvg(j + 1,p, w, x, y);
+    if(bestP <= MaxP - lostP) metodvg(j + 1, p, w, x, y);
     lostP -= p[j];
     curW += w[j];
     curP += p[j];
@@ -55,6 +55,7 @@ int main(){
  
         for(int i = 0; i < K; i++) MaxP += p[i];
         metodvg(0, p, w, x, y);
+        
         for(int i = 0; i < K; ++i) 
             if(y[i]) cout << s[i] << endl;
         cout << endl;               
